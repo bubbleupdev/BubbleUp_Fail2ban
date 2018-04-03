@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <BubbleUp_Fail2ban>
+            <active>true</active>
+            <codePool>local</codePool>
+             <depends>
+                <FireGento_AdminMonitoring/>
+            </depends>
+        </BubbleUp_Fail2ban>
+    </modules>
+</config>

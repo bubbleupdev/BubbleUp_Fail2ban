@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<config>
+    <sections>
+        <admin translate="label" module="bubbleup_fail2ban">
+            <groups>
+                <bubbleup_fail2ban translate="label">
+                    <label>BubbleUp Fail2Ban : Brute force protection for admin logins</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>1</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>0</show_in_website>
+                    <show_in_store>0</show_in_store>
+                    <fields>
+                        <max_failed_logins translate="label">
+                            <label>Maximum Attempts</label>
+                            <frontend_type>text</frontend_type>
+                            <validate>validate-number</validate>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>100</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <comment><![CDATA[After this number of failed login attempts, the user will not be allowed to log in.]]></comment>
+                        </max_failed_logins>
+                        <lockout_minutes translate="label">
+                            <label>Lockout Minutes</label>
+                            <frontend_type>text</frontend_type>
+                            <validate>validate-number</validate>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>200</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <comment><![CDATA[How far back to look for failed login attempts. The user will be blocked from logging in until the failed logins in this timeframe has dropped below the "Maximum Attempts" setting above.]]></comment>
+                        </lockout_minutes>
+                        <ip_whitelist translate="label">
+                            <label>Whitelisted IPs</label>
+                            <comment><model>bubbleup_fail2ban/config_whitelist_comment</model></comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>1000</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </ip_whitelist>
+                    </fields>
+                </bubbleup_fail2ban>
+            </groups>
+        </admin>
+    </sections>
+</config>

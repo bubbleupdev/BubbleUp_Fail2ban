@@ -1,0 +1,63 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <BubbleUp_Fail2ban>
+            <version>0.0.1</version>
+        </BubbleUp_Fail2ban>
+    </modules>
+    
+    <global>
+        <helpers>
+            <bubbleup_fail2ban>
+                <class>BubbleUp_Fail2ban_Helper</class>
+            </bubbleup_fail2ban>
+        </helpers>
+        <models>
+            <bubbleup_fail2ban>
+                <class>BubbleUp_Fail2ban_Model</class>
+            </bubbleup_fail2ban>
+        </models>
+        <events>
+            <admin_session_user_login_failed>
+                <observers>
+                    <fail2ban_admin_session_user_login_failed>
+                        <type>model</type>
+                        <class>bubbleup_fail2ban/observer</class>
+                        <method>onLoginFailure</method>
+                    </fail2ban_admin_session_user_login_failed>
+                </observers>
+            </admin_session_user_login_failed>
+            <admin_user_authenticate_before>
+                <observers>
+                    <fail2ban_admin_user_authenticate_before>
+                        <type>model</type>
+                        <class>bubbleup_fail2ban/observer</class>
+                        <method>beforeAdminAuthenticate</method>
+                    </fail2ban_admin_user_authenticate_before>
+                </observers>
+            </admin_user_authenticate_before>
+        </events>
+    </global>
+
+    <frontend>
+        <routers>
+            <bubbleup_fail2ban>
+                <use>standard</use>
+                <args>
+                    <module>BubbleUp_Fail2ban</module>
+                    <frontName>bubbleup_fail2ban</frontName>
+                </args>
+            </bubbleup_fail2ban>
+        </routers>
+    </frontend>
+
+    <default>
+        <admin>
+            <bubbleup_fail2ban>
+                <max_failed_logins>5</max_failed_logins>
+                <lockout_minutes>60</lockout_minutes>
+            </bubbleup_fail2ban>
+        </admin>
+    </default>
+
+</config>

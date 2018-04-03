@@ -1,0 +1,15 @@
+<?php
+
+class BubbleUp_Fail2ban_IndexController extends Mage_Core_Controller_Front_Action
+{
+    public function indexAction()
+    {
+        $username = 'simon';
+
+        $failures = Mage::getModel('bubbleup_fail2ban/history')->getFailedLoginCollection($username);
+
+        echo $failures->getSize();
+
+        print_r($failures->getData());
+    }
+}
